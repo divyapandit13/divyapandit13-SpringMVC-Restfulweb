@@ -32,4 +32,8 @@ List<Post> posts = new ArrayList<>();
 		return null;
 		
 	}
+
+	public void addPost(Post listElement) {
+		posts.add(listElement);
+	}
 }
