@@ -51,4 +51,14 @@ public class PostsService {
 		}
 		
 	}
+
+	public void deletePost(int id) {
+		for (int i = 0; i < posts.size(); i++) {
+			Post tempost = posts.get(i);
+			if(tempost.getPostId() == id) {
+				posts.remove(i);
+			}
+		}
+		
+	}
 }
