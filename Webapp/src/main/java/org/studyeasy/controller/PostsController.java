@@ -36,6 +36,12 @@ public class PostsController {
 			 new PostsService().addPost(listElement);
 		}
 	
+		
+		//update a post
+				@RequestMapping(method = RequestMethod.PUT, value = "/posts/{id}")
+				public void updatePost(@RequestBody Post post,@PathVariable int id){
+					 new PostsService().updatePost(post,id);
+				}
 	
 	
 }

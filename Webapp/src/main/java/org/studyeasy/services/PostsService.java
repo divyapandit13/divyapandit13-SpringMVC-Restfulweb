@@ -2,6 +2,7 @@ package org.studyeasy.services;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -38,5 +39,16 @@ public class PostsService {
 
 	public void addPost(Post listElement) {
 		posts.add(listElement);
+	}
+
+
+	public void updatePost(Post post, int id) {
+		for (int i = 0; i < posts.size(); i++) {
+			Post tempost = posts.get(i);
+			if(tempost.getPostId() == id) {
+				posts.set(i, post);
+			}
+		}
+		
 	}
 }
