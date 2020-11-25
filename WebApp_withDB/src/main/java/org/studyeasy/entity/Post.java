@@ -5,61 +5,53 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+
 @Entity
-@Table(name = "posts")
+@Table(name="posts")
 public class Post {
+	@Id
+	@Column(name="id")
+	int postId;
+	@Column(name="title")
+	String title;
+	@Column(name="body")
+	String body;
 	
-@Id
-@Column(name = "id")
- int postId;
+    public Post() {}
+	public Post(int postId, String title, String body) {
 
-@Id
-@Column(name = "title")
- String title;
-
-@Id
-@Column(name = "id")
- String body;
- 
-//Constructor
- public Post(int postId, String title, String body) {
-	
-		postId = this.postId;
-		title = this.title;
-		body = this.body;
+		this.postId = postId;
+		this.title = title;
+		this.body = body;
 	}
- 
- 
- //getter and setter
-public int getpostId() {
-	return postId;
-}
 
-public void setpostId(int postId) {
-	postId = this.postId;
-}
-public String gettitle() {
-	return title;
-}
-public void settitle(String title) {
-	title = this.title;
-}
-public String getbody() {
-	return body;
-}
-public void setbody(String body) {
-	body = this.body;
-}
+	public int getPostId() {
+		return postId;
+	}
 
+	public void setPostId(int postId) {
+		this.postId = postId;
+	}
 
-//to string method
-@Override
-public String toString() {
-	return "Post [postId=" + postId + ", title=" + title + ", body=" + body + "]";
-}
+	public String getTitle() {
+		return title;
+	}
 
+	public void setTitle(String title) {
+		this.title = title;
+	}
 
+	public String getBody() {
+		return body;
+	}
 
+	public void setBody(String body) {
+		this.body = body;
+	}
 
- 
+	@Override
+	public String toString() {
+		return "Post [postId=" + postId + ", title=" + title + ", body=" + body + "]";
+	}
+
 }

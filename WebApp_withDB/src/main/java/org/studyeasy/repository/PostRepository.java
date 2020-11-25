@@ -1,8 +1,11 @@
 package org.studyeasy.repository;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 import org.studyeasy.entity.Post;
 
-public interface PostRepository extends CrudRepository<Post, Integer>{
-//crud operations
+@Repository
+public interface PostRepository extends JpaRepository<Post, Integer> {
+	
+
 }

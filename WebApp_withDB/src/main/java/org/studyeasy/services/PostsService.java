@@ -1,64 +1,47 @@
 package org.studyeasy.services;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.studyeasy.entity.Post;
-
+import org.studyeasy.repository.PostRepository;
 
 @Service
 public class PostsService {
-  static List<Post> posts = new ArrayList<>(
-		
-		Arrays.asList(
-				new Post(1,"hello", "world"),
-				new Post(2,"lamda Expressions", "core java"),
-				new Post(3,"OOP", "java"),
-				new Post(4,"Inheritance", "Polymorphism")
-				)
-		);
-	
-
-	
-	public List<Post> getAllPosts(){
-		return posts;
-	}
-
-	public Post getPost(int id) {
-		for(Post post : posts) {
-			if(post.getPostId() == id) {
-				return post;
-			}
+	@Autowired
+	private PostRepository repo;
+   
+	public List<Post> getPosts(){
+		List<Post> list = new ArrayList<>();
+		for(Post post: repo.findAll()) {
+		    list.add(post);	
 		}
-		return null;
-		
+		return list;
+	}
+	
+	public Post getPost(int id) {
+		return repo.findById(id).get();
 	}
 
 	public void addPost(Post listElement) {
-		posts.add(listElement);
-	}
-
-
-	public void updatePost(Post post, int id) {
-		for (int i = 0; i < posts.size(); i++) {
-			Post tempost = posts.get(i);
-			if(tempost.getPostId() == id) {
-				posts.set(i, post);
-			}
-		}
+		repo.save(listElement);
 		
+	}
+	public void updatePost(Post post) {
+	
+		repo.save(post);
 	}
 
 	public void deletePost(int id) {
-		for (int i = 0; i < posts.size(); i++) {
-			Post tempost = posts.get(i);
-			if(tempost.getPostId() == id) {
-				posts.remove(i);
-			}
-		}
-		
+	    repo.deleteById(id);
 	}
 }
+
+
+
+
+
+
+
